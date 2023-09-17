@@ -9,6 +9,7 @@ int print_integer(va_list args)
 int div = 1;
 int len = 0;
 unsigned int num;
+char c;
 if (n < 0)
 {len += write(1, "-", 1);
 num = n * -1; }
@@ -17,6 +18,7 @@ num = n;
 while (num / div > 9)
 div *= 10;
 while (div != 0)
-{len += write(1, (char *)(((num / div) % 10) + '0'), 1);
+{c = ((num / div) % 10) + '0';
+len += write(1, &c, 1);
 div /= 10; }
 return (len); }
